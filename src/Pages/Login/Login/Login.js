@@ -16,20 +16,20 @@ const Login = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
+        const from = event.target;
+        const email = from.email.value;
+        const password = from.password.value;
 
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
-                form.reset();
+                // console.log(user);
+                from.reset();
                 setError('');
-                if(user.emailVerified){
-                    navigate(from, {replace: true});
+                if (user.emailVerified) {
+                    navigate(from, { replace: true });
                 }
-                else{
+                else {
                     toast.error('Your email is not verified. Please verify your email address.')
                 }
             })
